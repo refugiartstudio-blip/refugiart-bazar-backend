@@ -1,0 +1,639 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSpace - Digital Art Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'accent': '#FF6B35',
+                        'gray-950': '#0A0A0A',
+                    },
+                    animation: {
+                        'heart': 'heart 0.3s ease-in-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        heart: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.3)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white font-inter text-gray-900">
+    
+    <!-- @COMPONENT: Header [navigation, user menu, search] -->
+    <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-playfair font-bold">ArtSpace</h1>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search artists, artwork..." 
+                               class="w-full bg-gray-100 border-0 rounded-full py-2 px-4 pl-10 focus:bg-white focus:ring-2 focus:ring-accent focus:outline-none transition-all">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-accent transition-colors">Discover</a>
+                    <a href="#" class="text-gray-700 hover:text-accent transition-colors">Marketplace</a>
+                    <a href="#" class="text-gray-700 hover:text-accent transition-colors">Sell</a>
+                    
+                    <!-- User Menu -->
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-2 text-gray-700 hover:text-accent transition-colors">
+                            <i class="fas fa-heart text-xl"></i>
+                        </button>
+                        <button class="relative p-2 text-gray-700 hover:text-accent transition-colors">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                        </button>
+                        <!-- Profile with RB Balance -->
+                        <div class="flex items-center space-x-3 bg-gray-100 rounded-full px-3 py-1">
+                            <span class="text-sm font-medium text-gray-700" data-bind="user.rbBalance">1,250 RB</span>
+                            <!-- Artist profile image placeholder -->
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&w=40&h=40&fit=crop&crop=face" 
+                                 alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero Section [featured artwork showcase] -->
+    <section class="bg-gradient-to-r from-gray-50 to-gray-100 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-5xl font-playfair font-bold text-gray-900 leading-tight">
+                        Discover & Collect 
+                        <span class="text-accent">Digital Art</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 leading-relaxed">
+                        Explore thousands of unique digital artworks from talented artists worldwide. 
+                        Buy, sell, and showcase your collection in our vibrant marketplace.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button class="bg-accent text-white px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors">
+                            Start Exploring
+                        </button>
+                        <button class="border border-gray-300 text-gray-700 px-8 py-3 rounded-full font-medium hover:border-accent hover:text-accent transition-colors">
+                            Become an Artist
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <!-- Featured artwork grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- A vibrant digital abstract painting with swirling colors -->
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&w=300&h=400&fit=crop" 
+                             alt="Abstract digital art" class="rounded-xl shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                        <!-- A minimalist geometric digital artwork with clean lines -->
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&w=300&h=400&fit=crop" 
+                             alt="Geometric digital art" class="rounded-xl shadow-lg transform -rotate-3 hover:rotate-0 transition-transform duration-300 mt-8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Featured Artists [horizontal scroll carousel] -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-playfair font-bold">Featured Artists</h3>
+                <a href="#" class="text-accent hover:text-orange-600 transition-colors">View All</a>
+            </div>
+            
+            <div class="flex space-x-6 overflow-x-auto pb-4">
+                <!-- @MAP: featuredArtists.map(artist => ( -->
+                <div class="flex-shrink-0 w-64 bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                    <!-- Artist profile image -->
+                    <img src="https://pixabay.com/get/gf2551d3bd33103947fece411604d96188b847a64bb3acbb49a39c2e4bf0b3efa6b46617db75a242ca3b1331298d29a9f6dc1a35e5c21b960d8a689d592892761_1280.jpg" 
+                         alt="Artist profile" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg" data-bind="artist.name">Sarah Chen</h4>
+                        <p class="text-gray-600 text-sm" data-bind="artist.specialization">Digital Illustrator</p>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-sm text-gray-500" data-bind="artist.artworkCount">42 artworks</span>
+                            <button class="bg-accent text-white px-4 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                Follow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-64 bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                    <!-- Artist profile image -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=256&h=200&fit=crop&crop=face" 
+                         alt="Artist profile" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg">Marcus Rivera</h4>
+                        <p class="text-gray-600 text-sm">3D Artist</p>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-sm text-gray-500">28 artworks</span>
+                            <button class="bg-accent text-white px-4 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                Follow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-64 bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                    <!-- Artist profile image -->
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=256&h=200&fit=crop&crop=face" 
+                         alt="Artist profile" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg">Elena Kozlov</h4>
+                        <p class="text-gray-600 text-sm">Concept Artist</p>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-sm text-gray-500">67 artworks</span>
+                            <button class="bg-accent text-white px-4 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                Follow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-64 bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                    <!-- Artist profile image -->
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&w=256&h=200&fit=crop&crop=face" 
+                         alt="Artist profile" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg">David Park</h4>
+                        <p class="text-gray-600 text-sm">Motion Graphics</p>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-sm text-gray-500">91 artworks</span>
+                            <button class="bg-accent text-white px-4 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                Follow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Featured Artists -->
+
+    <!-- @COMPONENT: Artwork Feed [Instagram-style grid layout] -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-playfair font-bold">Latest Artworks</h3>
+                <div class="flex space-x-4">
+                    <select class="bg-white border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-accent focus:outline-none">
+                        <option>All Categories</option>
+                        <option>Digital Painting</option>
+                        <option>3D Art</option>
+                        <option>Photography</option>
+                        <option>Illustration</option>
+                    </select>
+                    <select class="bg-white border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-accent focus:outline-none">
+                        <option>Newest</option>
+                        <option>Most Popular</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Masonry Grid Layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- @MAP: artworks.map(artwork => ( -->
+                
+                <!-- Artwork Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <!-- A colorful abstract digital painting with flowing organic shapes -->
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&w=400&h=500&fit=crop" 
+                             alt="Abstract digital artwork" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                        <button class="absolute top-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="far fa-heart text-xl hover:fas hover:text-red-500 transition-all duration-200"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg mb-1" data-bind="artwork.title">Cosmic Dreams</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-bind="artwork.artist">by Sarah Chen</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent font-bold text-lg" data-bind="artwork.price">450 RB</span>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span data-bind="artwork.likes">24</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artwork Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <!-- A minimalist geometric digital art piece with clean lines and bold colors -->
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&w=400&h=600&fit=crop" 
+                             alt="Geometric digital art" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                        <button class="absolute top-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="far fa-heart text-xl hover:fas hover:text-red-500 transition-all duration-200"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg mb-1">Geometric Flow</h4>
+                        <p class="text-gray-600 text-sm mb-2">by Marcus Rivera</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent font-bold text-lg">320 RB</span>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span>18</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artwork Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <!-- A digital landscape painting with mountains and aurora colors -->
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&w=400&h=450&fit=crop" 
+                             alt="Digital landscape art" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                        <button class="absolute top-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="far fa-heart text-xl hover:fas hover:text-red-500 transition-all duration-200"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg mb-1">Northern Lights</h4>
+                        <p class="text-gray-600 text-sm mb-2">by Elena Kozlov</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent font-bold text-lg">680 RB</span>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span>42</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artwork Card 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <!-- A cyberpunk cityscape digital illustration with neon lights -->
+                        <img src="https://pixabay.com/get/gbedb51edb9860bc127ab8070f981c01725efa9a092b8743964108547fa36285343e42d416d150020ca48453c32e757ddc549ee44b4e8080fc6f067a5e79bd86f_1280.jpg" 
+                             alt="Cyberpunk digital art" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                        <button class="absolute top-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="far fa-heart text-xl hover:fas hover:text-red-500 transition-all duration-200"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg mb-1">Neon City</h4>
+                        <p class="text-gray-600 text-sm mb-2">by David Park</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent font-bold text-lg">890 RB</span>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span>67</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artwork Card 5 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <!-- A surreal digital portrait with artistic effects -->
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=400&h=500&fit=crop" 
+                             alt="Surreal portrait art" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                        <button class="absolute top-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="far fa-heart text-xl hover:fas hover:text-red-500 transition-all duration-200"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg mb-1">Digital Dreams</h4>
+                        <p class="text-gray-600 text-sm mb-2">by Alex Morrison</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent font-bold text-lg">520 RB</span>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span>31</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artwork Card 6 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <!-- An abstract fluid art piece with vibrant colors -->
+                        <img src="https://images.unsplash.com/photo-1561998338-13ad7883b20f?ixlib=rb-4.0.3&w=400&h=550&fit=crop" 
+                             alt="Fluid abstract art" class="w-full h-68 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                        <button class="absolute top-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="far fa-heart text-xl hover:fas hover:text-red-500 transition-all duration-200"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-lg mb-1">Fluid Motion</h4>
+                        <p class="text-gray-600 text-sm mb-2">by Maria Santos</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent font-bold text-lg">350 RB</span>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span>15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- @END_MAP )) -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="bg-gray-900 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
+                    Load More Artworks
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Artwork Feed -->
+
+    <!-- @COMPONENT: Artist Spotlight [portfolio showcase] -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-playfair font-bold mb-4">Artist Spotlight</h3>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Featured portfolio showcase highlighting the extraordinary talent in our community
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Artist Info -->
+                <div class="lg:sticky lg:top-24">
+                    <div class="bg-gray-50 rounded-2xl p-8">
+                        <!-- Featured artist profile image -->
+                        <img src="https://pixabay.com/get/gc3ee649ac9a0c4d35765dd47f4a28dbc132e4bdef20d1add9b239c144199d9fd349831b5d75821422791609546f13f378707b1642f0190212f46c805c43a9f63_1280.jpg" 
+                             alt="Featured artist profile" class="w-24 h-24 rounded-full object-cover mx-auto mb-6">
+                        <div class="text-center">
+                            <h4 class="text-2xl font-playfair font-bold mb-2" data-bind="featuredArtist.name">Sarah Chen</h4>
+                            <p class="text-gray-600 mb-4" data-bind="featuredArtist.title">Digital Illustrator & Concept Artist</p>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-6" data-bind="featuredArtist.bio">
+                                Specialized in creating vibrant digital landscapes and character designs. 
+                                Over 5 years of experience in the gaming and animation industry.
+                            </p>
+                            <div class="grid grid-cols-3 gap-4 text-center mb-6">
+                                <div>
+                                    <div class="text-2xl font-bold text-accent" data-bind="featuredArtist.artworks">42</div>
+                                    <div class="text-sm text-gray-600">Artworks</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-accent" data-bind="featuredArtist.followers">1.2k</div>
+                                    <div class="text-sm text-gray-600">Followers</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-accent" data-bind="featuredArtist.sales">28</div>
+                                    <div class="text-sm text-gray-600">Sales</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-accent text-white py-3 rounded-full font-medium hover:bg-orange-600 transition-colors mb-3">
+                                Follow Artist
+                            </button>
+                            <button class="w-full border border-gray-300 text-gray-700 py-3 rounded-full font-medium hover:border-accent hover:text-accent transition-colors">
+                                View Full Portfolio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div class="lg:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- A stunning fantasy landscape digital painting with magical elements -->
+                        <img src="https://pixabay.com/get/gaf0330106b2c9cd1f1f8ea4a60f9232d86ea51b7f022a0fe4a4fc7cf9d73ee3c5511f83d6cd39e5269ed384a9324158a441fb2da2b5bbe68d05ab636e13286fa_1280.jpg" 
+                             alt="Fantasy landscape artwork" class="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full object-cover">
+                        
+                        <!-- A character design artwork showing a futuristic warrior -->
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=500&h=400&fit=crop" 
+                             alt="Character design artwork" class="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full object-cover">
+                        
+                        <!-- An environmental concept art piece with alien architecture -->
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&w=500&h=400&fit=crop" 
+                             alt="Environmental concept art" class="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full object-cover">
+                        
+                        <!-- A vibrant abstract composition with flowing forms -->
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&w=500&h=600&fit=crop" 
+                             alt="Abstract digital composition" class="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Artist Spotlight -->
+
+    <!-- @COMPONENT: Call to Action [join community] -->
+    <section class="py-20 bg-gradient-to-r from-accent to-orange-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-4xl font-playfair font-bold text-white mb-6">
+                Join Our Creative Community
+            </h3>
+            <p class="text-xl text-orange-100 mb-8 leading-relaxed">
+                Whether you're an artist looking to showcase your work or a collector searching for unique pieces, 
+                ArtSpace is your gateway to the digital art world.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-accent px-8 py-4 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+                    Start Selling Art
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white hover:text-accent transition-colors">
+                    Explore Marketplace
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Call to Action -->
+
+    <!-- @COMPONENT: Footer [links, social, info] -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h4 class="text-2xl font-playfair font-bold">ArtSpace</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        The premier marketplace for digital art, connecting artists and collectors worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-discord text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Marketplace -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Marketplace</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Browse Art</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Categories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Featured Artists</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">New Releases</a></li>
+                    </ul>
+                </div>
+
+                <!-- Artists -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">For Artists</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Start Selling</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Artist Resources</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Commission Guidelines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Support</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 ArtSpace. All rights reserved. Built for artists, by artists.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- @COMPONENT: Floating Action Button [upload artwork] -->
+    <button class="fixed bottom-8 right-8 bg-accent text-white w-16 h-16 rounded-full shadow-lg hover:shadow-xl hover:bg-orange-600 transition-all duration-300 flex items-center justify-center animate-float">
+        <i class="fas fa-plus text-xl"></i>
+    </button>
+    <!-- @END_COMPONENT: Floating Action Button -->
+
+    <!-- @FUNCTIONALITY: Mobile responsive navigation menu, artwork upload modal, user authentication system -->
+    <!-- @STATE: isMenuOpen:boolean = false, selectedCategory:string = 'all', userLoggedIn:boolean = true -->
+    <!-- @TODO: Implement artwork upload functionality, user authentication, payment processing with RB tokens -->
+
+    <script>
+        (function() {
+            // Heart animation for like buttons
+            const heartButtons = document.querySelectorAll('i.fa-heart');
+            heartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.add('animate-heart');
+                    this.classList.toggle('far');
+                    this.classList.toggle('fas');
+                    this.classList.toggle('text-red-500');
+                    
+                    setTimeout(() => {
+                        this.classList.remove('animate-heart');
+                    }, 300);
+                });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Image lazy loading simulation
+            const images = document.querySelectorAll('img[src*="unsplash"]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // TODO: Implement artist profile management, artwork upload with image processing
+            // TODO: Implement RB token payment system and transaction history
+            // TODO: Implement real-time notifications for likes, comments, and sales
+            // TODO: Implement advanced search and filtering capabilities
+            // TODO: Implement artist portfolio customization and branding options
+        })();
+    </script>
+</body>
+</html>

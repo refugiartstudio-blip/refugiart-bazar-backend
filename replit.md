@@ -1,6 +1,6 @@
 # Overview
 
-ArtSpace is a digital art marketplace platform that connects artists and art collectors. The application allows artists to upload and showcase their digital artwork, while buyers can discover, like, comment on, and purchase art pieces. The platform features user authentication through Replit Auth, a comprehensive artwork management system, social features like following artists and liking artwork, and a virtual currency system for transactions.
+Refugiart Bazar is a social marketplace app designed for independent artists to share and sell their artworks. The platform combines Instagram-like social features with a digital bazaar for transactions, using RB (Refugiart Bazar Credits) as virtual currency. Key features include user registration/login, wallet system with RB balance, paid comments system, VIP plans for free interactions, and admin panel for monitoring.
 
 # User Preferences
 
@@ -18,20 +18,20 @@ The frontend is built with React and TypeScript using Vite as the build tool. Th
 - **Component Structure**: Organized into reusable UI components, page components, and business logic hooks
 
 ## Backend Architecture
-The backend uses Express.js with TypeScript following a RESTful API design:
-- **Framework**: Express.js with middleware for JSON parsing, CORS handling, and request logging
+The backend uses FastAPI with Python following a RESTful API design:
+- **Framework**: FastAPI with automatic OpenAPI documentation and async support
 - **API Design**: RESTful endpoints organized by resource (users, artworks, comments, likes, follows, purchases)
-- **Error Handling**: Centralized error middleware with consistent error responses
-- **Request Validation**: Zod schemas for input validation and type safety
-- **Development Setup**: Hot reloading with tsx and Vite integration for seamless development experience
+- **Error Handling**: FastAPI's built-in exception handling with custom error responses
+- **Request Validation**: Pydantic models for request/response validation and type safety
+- **Development Setup**: Uvicorn server with hot reloading for seamless development experience
 
 ## Data Storage
-The application uses PostgreSQL with Drizzle ORM for database operations:
-- **Database**: PostgreSQL hosted on Neon for cloud-based data storage
-- **ORM**: Drizzle ORM providing type-safe database queries and schema management
-- **Schema Design**: Relational data model with tables for users, artworks, likes, comments, follows, and purchases
-- **Migrations**: Drizzle Kit for database schema migrations and version control
-- **Session Storage**: PostgreSQL-backed session storage for authentication state
+The application uses MongoDB with Motor (async MongoDB driver) for database operations:
+- **Database**: MongoDB for flexible document storage and scalability
+- **Driver**: Motor (AsyncIOMotorClient) providing async MongoDB operations
+- **Schema Design**: Document-based data model with collections for users, artworks, likes, comments, follows, and purchases
+- **Data Validation**: Pydantic models for data validation and serialization
+- **Session Storage**: MongoDB-backed session storage for authentication state
 
 ## Authentication and Authorization
 Authentication is handled through Replit's OIDC-based authentication system:
